@@ -18,7 +18,7 @@ WORKDIR /
 
 COPY ./docker-entrypoint.sh .
 
-RUN dos2unix docker-entrypoint.sh
+RUN dos2unix docker-entrypoint.sh && chmod +x docker-entrypoint.sh
 
 # add root user to lpadmin to allow printing
 RUN addgroup root lpadmin
