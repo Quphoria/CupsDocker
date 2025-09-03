@@ -4,6 +4,7 @@ services:
     image: quphoria/cupsd
     volumes:
       - ./printers.conf:/etc/cups/printers.conf
+      - ./cups_ppd:/etc/cups/ppd
       - ./driver/R880NPII/R880NPII.ppd:/ppd/R880NPII.ppd:ro
       - ./driver/R880NPII/rastertoR880NPII:/usr/lib/cups/filter/rastertoR880NPII:ro
       - /etc/localtime:/etc/localtime:ro
