@@ -4,9 +4,7 @@ services:
     image: quphoria/cupsd
     hostname: cupsd
     volumes:
-      - ./cupsd.conf:/etc/cups/cupsd.conf
-      - ./printers.conf:/etc/cups/printers.conf
-      - ./cups_ppd:/etc/cups/ppd
+      - ./config:/config
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     ports:

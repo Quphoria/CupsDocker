@@ -23,6 +23,8 @@ COPY ./driver/R880NPII/rastertoR880NPII /usr/lib/cups/filter/rastertoR880NPII
 RUN dos2unix docker-entrypoint.sh && chmod +x docker-entrypoint.sh
 RUN chown root:root /usr/lib/cups/filter/rastertoR880NPII
 
+WORKDIR /config
+
 # add root user to lpadmin to allow printing
 RUN addgroup root lpadmin
 
