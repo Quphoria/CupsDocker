@@ -21,7 +21,8 @@ COPY ./driver/R880NPII/R880NPII.ppd /ppd/
 COPY ./driver/R880NPII/rastertoR880NPII /usr/lib/cups/filter/rastertoR880NPII
 
 RUN dos2unix docker-entrypoint.sh && chmod +x docker-entrypoint.sh
-RUN chown root:root /usr/lib/cups/filter/rastertoR880NPII
+RUN chown root:root /usr/lib/cups/filter/rastertoR880NPII && \
+  chmod +x /usr/lib/cups/filter/rastertoR880NPII
 
 WORKDIR /config
 

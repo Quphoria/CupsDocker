@@ -17,5 +17,12 @@ fi
 
 printf "${ADMIN_PASSWORD:-cupsadmin}\n${ADMIN_PASSWORD:-cupsadmin}" | passwd admin &> /dev/null
 
+# Print error log to console
+if [ ! -f /var/log/cups/error_log ]; then
+    mkdir -p /var/log/cups
+    touch /var/log/cups/error_log
+fi
+tail -F -n 0 /var/log/cups/error_log &
+
 echo "Starting cupsd..."
 cupsd -f -c /config/cupsd.conf
