@@ -17,8 +17,11 @@ RUN apk add --no-cache freetype ttf-freefont fontconfig && \
 WORKDIR /
 
 COPY ./docker-entrypoint.sh .
+COPY ./driver/R880NPII/R880NPII.ppd /ppd/
+COPY ./driver/R880NPII/rastertoR880NPII /usr/lib/cups/filter/rastertoR880NPII
 
 RUN dos2unix docker-entrypoint.sh && chmod +x docker-entrypoint.sh
+RUN chown root:root /usr/lib/cups/filter/rastertoR880NPII
 
 # add root user to lpadmin to allow printing
 RUN addgroup root lpadmin

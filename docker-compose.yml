@@ -2,18 +2,17 @@ version: '3.9'
 services:
   cupsd:
     image: quphoria/cupsd
+    hostname: cupsd
     volumes:
+      - ./cupsd.conf:/etc/cups/cupsd.conf
       - ./printers.conf:/etc/cups/printers.conf
       - ./cups_ppd:/etc/cups/ppd
-      - ./driver/R880NPII/R880NPII.ppd:/ppd/R880NPII.ppd:ro
-      - ./driver/R880NPII/rastertoR880NPII:/usr/lib/cups/filter/rastertoR880NPII:ro
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     ports:
       - '631:631'
     environment:
       ADMIN_PASSWORD: cupsadmin
-      MAX_JOBS: 2
     logging:
       driver: "json-file"
       options:
