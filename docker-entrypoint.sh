@@ -15,6 +15,8 @@ if [ ! -f /config/cupsd.conf ]; then
     sed -i 's/Order allow,deny/Allow All\n  Order allow,deny/' /config/cupsd.conf
 fi
 
+chown -R root:lp /config/
+
 printf "${ADMIN_PASSWORD:-cupsadmin}\n${ADMIN_PASSWORD:-cupsadmin}" | passwd admin &> /dev/null
 
 # Print error log to console
